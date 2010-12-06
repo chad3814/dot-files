@@ -1,0 +1,29 @@
+#
+# some aliases
+#
+
+case $TERM in
+
+    sun-cmd )
+	alias winheader='echo -n "]l$(hostname) : ${PWD}\";echo -n "]L$(hostname)\"'
+    ;;
+
+    xterm )
+	alias winheader='echo -n "]2;"$(hostname)" : ${PWD}]1;"$(hostname)""'
+    ;;
+
+    * )
+	alias winheader='echo -n ""'
+    ;;
+esac
+
+ls () {
+    /bin/ls -aCF $* | ${PAGER:-more}
+}
+
+cd () {
+    builtin cd $*;
+    winheader;
+}
+
+winheader

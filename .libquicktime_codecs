@@ -1,0 +1,1148 @@
+# This is the codec database file for libquicktime
+# It is automatically generated and should not be edited.
+# If you changed it and your libquicktime program doesn't work
+# anymore, delete it, and you will get a new one
+AudioOrder: lame,faac,ima4,rawaudio,twos,ulaw,sowt,alaw,in24,in32,fl32,fl64,lpcm,faad2,vorbis,vorbis_qt
+VideoOrder: png,pngalpha,raw,rawalpha,v308,v408,v410,yuv2,yuv4,yv12,2vuy,v210,jpeg,mjpa,dv,dv_pal,x264,rtjpeg
+BeginCodec: lame
+LongName: Lame mp3 encoder
+Description: Lame mp3 encoder (see http://www.mp3dev.org)
+Type: Audio
+Direction: Encode
+Compatibility: 0000000f
+NumFourccs: 1
+Fourccs: 0x2E6D7033 
+NumWavIds: 1
+WavIds: 0x55 
+NumEncodingParameters: 6
+BeginParameterE: mp3_bitrate_mode
+RealName: Bitrate mode
+Type: Stringlist
+Value: CBR
+NumOptions: 3
+Options: CBR
+Options: ABR
+Options: VBR
+OptionLabels: CBR
+OptionLabels: ABR
+OptionLabels: VBR
+HelpString: CBR: Constant bitrate\nVBR: Variable bitrate\nABR: Average bitrate
+EndParameter
+BeginParameterE: mp3_bitrate
+RealName: Nominal Bitrate (ABR/CBR)
+Type: Integer
+Value: 256000
+HelpString: Bitrate in bits per second. For CBR, this must be a valid MP3 bitrate
+EndParameter
+BeginParameterE: mp3_bitrate_min
+RealName: Minimum Bitrate (ABR)
+Type: Integer
+Value: 64000
+HelpString: Minimum ABR bitrate in bits per second. This must be a valid MP3 bitrate
+EndParameter
+BeginParameterE: mp3_bitrate_max
+RealName: Maximum Bitrate (ABR)
+Type: Integer
+Value: 320000
+HelpString: Maximum ABR bitrate in bits per second. This must be a valid MP3 bitrate
+EndParameter
+BeginParameterE: mp3_quality
+RealName: Quality (0 = best)
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 9
+HelpString: 0: Slowest encoding, best quality\n9: Fastest encoding, worst quality
+EndParameter
+BeginParameterE: mp3_quality_vbr
+RealName: VBR Quality (0 = best)
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 9
+HelpString: VBR Quality level. 0: best, 9: worst
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_lame.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: faac
+LongName: MPEG-2/4 AAC encoder
+Description: MPEG-2/4 AAC encoder (faac based)
+Type: Audio
+Direction: Encode
+Compatibility: 00000073
+NumFourccs: 1
+Fourccs: 0x6D703461 
+NumEncodingParameters: 3
+BeginParameterE: faac_bitrate
+RealName: Bitrate (kbps, 0 = VBR)
+Type: Integer
+Value: 0
+EndParameter
+BeginParameterE: quality
+RealName: VBR Quality
+Type: Integer
+Value: 100
+ValueMin: 10
+ValueMax: 500
+EndParameter
+BeginParameterE: object_type
+RealName: Object type
+Type: Stringlist
+Value: Low
+NumOptions: 4
+Options: Low
+Options: Main
+Options: SSR
+Options: LTP
+OptionLabels: Low
+OptionLabels: Main
+OptionLabels: SSR
+OptionLabels: LTP
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_faac.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: ima4
+LongName: ima4
+Description: The IMA4 compressor reduces 16 bit audio data to 1/4 size, with very good quality
+Type: Audio
+Direction: Both
+Compatibility: 0000000f
+NumFourccs: 1
+Fourccs: 0x696D6134 
+NumWavIds: 1
+WavIds: 0x11 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: rawaudio
+LongName: Raw 8 bit audio
+Description: Don't use this for anything better than telephone quality
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x72617720 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 1
+FileTime: 1264817361
+EndCodec
+BeginCodec: twos
+LongName: Twos
+Description: Twos is the preferred encoding for uncompressed audio
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x74776F73 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 2
+FileTime: 1264817361
+EndCodec
+BeginCodec: ulaw
+LongName: Ulaw
+Description: Ulaw
+Type: Audio
+Direction: Both
+Compatibility: 0000000f
+NumFourccs: 1
+Fourccs: 0x756C6177 
+NumWavIds: 1
+WavIds: 0x07 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 3
+FileTime: 1264817361
+EndCodec
+BeginCodec: sowt
+LongName: Sowt
+Description: 8/16/24 bit PCM Little endian
+Type: Audio
+Direction: Both
+Compatibility: 0000000f
+NumFourccs: 1
+Fourccs: 0x736F7774 
+NumWavIds: 1
+WavIds: 0x01 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 4
+FileTime: 1264817361
+EndCodec
+BeginCodec: alaw
+LongName: Alaw
+Description: Alaw
+Type: Audio
+Direction: Both
+Compatibility: 0000000f
+NumFourccs: 1
+Fourccs: 0x616C6177 
+NumWavIds: 1
+WavIds: 0x06 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 5
+FileTime: 1264817361
+EndCodec
+BeginCodec: in24
+LongName: 24 bit PCM
+Description: 24 bit PCM
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x696E3234 
+NumEncodingParameters: 1
+BeginParameterE: pcm_little_endian
+RealName: Little endian
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 6
+FileTime: 1264817361
+EndCodec
+BeginCodec: in32
+LongName: 32 bit PCM
+Description: 32 bit PCM
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x696E3332 
+NumEncodingParameters: 1
+BeginParameterE: pcm_little_endian
+RealName: Little endian
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 7
+FileTime: 1264817361
+EndCodec
+BeginCodec: fl32
+LongName: 32 bit float
+Description: 32 bit float
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x666C3332 
+NumEncodingParameters: 1
+BeginParameterE: pcm_little_endian
+RealName: Little endian
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 8
+FileTime: 1264817361
+EndCodec
+BeginCodec: fl64
+LongName: 64 bit float
+Description: 64 bit float
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x666C3634 
+NumEncodingParameters: 1
+BeginParameterE: pcm_little_endian
+RealName: Little endian
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 9
+FileTime: 1264817361
+EndCodec
+BeginCodec: lpcm
+LongName: Linear PCM (QT 7)
+Description: Linear PCM encoder
+Type: Audio
+Direction: Both
+Compatibility: 00000002
+NumFourccs: 1
+Fourccs: 0x6C70636D 
+NumEncodingParameters: 2
+BeginParameterE: pcm_format
+RealName: Format
+Type: Stringlist
+Value: Integer (16 bit)
+NumOptions: 5
+Options: Integer (16 bit)
+Options: Integer (24 bit)
+Options: Integer (32 bit)
+Options: Float (32 bit)
+Options: Float (64 bit)
+OptionLabels: Integer (16 bit)
+OptionLabels: Integer (24 bit)
+OptionLabels: Integer (32 bit)
+OptionLabels: Float (32 bit)
+OptionLabels: Float (64 bit)
+EndParameter
+BeginParameterE: pcm_little_endian
+RealName: Little endian
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_audiocodec.so
+ModuleIndex: 10
+FileTime: 1264817361
+EndCodec
+BeginCodec: faad2
+LongName: MPEG-2/4 AAC decoder
+Description: MPEG-2/4 AAC decoder (faad2 based)
+Type: Audio
+Direction: Decode
+Compatibility: 00000000
+NumFourccs: 1
+Fourccs: 0x6D703461 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_faad2.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: vorbis
+LongName: Ogg Vorbis (qt4l compatible)
+Description: Patent free audio codec (see http://www.vorbis.com)
+Type: Audio
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 2
+Fourccs: 0x4F676753 0x4F676756 
+NumEncodingParameters: 4
+BeginParameterE: vorbis_bitrate
+RealName: Nominal Bitrate
+Type: Integer
+Value: 128000
+EndParameter
+BeginParameterE: vorbis_vbr
+RealName: Use variable bitrate
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: vorbis_max_bitrate
+RealName: Maximum Bitrate (-1 = no limit)
+Type: Integer
+Value: -1
+EndParameter
+BeginParameterE: vorbis_min_bitrate
+RealName: Minimum Bitrate (-1 = no limit)
+Type: Integer
+Value: -1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_vorbis.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: vorbis_qt
+LongName: Ogg Vorbis (qtcomponents compatible)
+Description: Patent free audio codec (see http://www.vorbis.com)
+Type: Audio
+Direction: Both
+Compatibility: 00000002
+NumFourccs: 2
+Fourccs: 0x4F676756 0x4F676753 
+NumEncodingParameters: 4
+BeginParameterE: vorbis_bitrate
+RealName: Nominal Bitrate
+Type: Integer
+Value: 128000
+EndParameter
+BeginParameterE: vorbis_vbr
+RealName: Use variable bitrate
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: vorbis_max_bitrate
+RealName: Maximum Bitrate (-1 = no limit)
+Type: Integer
+Value: -1
+EndParameter
+BeginParameterE: vorbis_min_bitrate
+RealName: Minimum Bitrate (-1 = no limit)
+Type: Integer
+Value: -1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_vorbis.so
+ModuleIndex: 1
+FileTime: 1264817361
+EndCodec
+BeginCodec: png
+LongName: PNG
+Description: Lossless video codec (RGB mode)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x706E6720 
+NumEncodingParameters: 1
+BeginParameterE: png_compression_level
+RealName: Compression Level
+Type: Integer
+Value: 9
+ValueMin: 0
+ValueMax: 9
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_png.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: pngalpha
+LongName: PNG (with alpha)
+Description: Lossless video codec (RGBA mode)
+Type: Video
+Direction: Encode
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x706E6720 
+NumEncodingParameters: 1
+BeginParameterE: png_compression_level
+RealName: Compression Level
+Type: Integer
+Value: 9
+ValueMin: 0
+ValueMax: 9
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_png.so
+ModuleIndex: 1
+FileTime: 1264817361
+EndCodec
+BeginCodec: raw
+LongName: RGB uncompressed
+Description: RGB uncompressed.
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 2
+Fourccs: 0x72617720 0x72617733 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: rawalpha
+LongName: RGBA uncompressed
+Description: RGBA uncompressed
+Type: Video
+Direction: Encode
+Compatibility: 00000003
+NumFourccs: 2
+Fourccs: 0x72617720 0x72617733 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 1
+FileTime: 1264817361
+EndCodec
+BeginCodec: v308
+LongName: 8 bit planar YUV 4:4:4 (v308)
+Description: 8 bit planar YUV 4:4:4 (v308)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x76333038 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 2
+FileTime: 1264817361
+EndCodec
+BeginCodec: v408
+LongName: 8 bit Planar YUVA 4:4:4:4 (v408)
+Description: 8 bit Planar YUVA 4:4:4:4 (v408)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x76343038 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 3
+FileTime: 1264817361
+EndCodec
+BeginCodec: v410
+LongName: 10 bit Packed YUV 4:4:4 (v410)
+Description: 10 bit Packed YUV 4:4:4 (v410)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x76343130 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 4
+FileTime: 1264817361
+EndCodec
+BeginCodec: yuv2
+LongName: 8 bit Packed YUV 4:2:2 (yuv2)
+Description: 8 bit Packed YUV 4:2:2 (yuv2)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x79757632 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 5
+FileTime: 1264817361
+EndCodec
+BeginCodec: yuv4
+LongName: YUV 4:2:0 (yuv4)
+Description: YUV 4:2:0 (yuv4) NOT COMPATIBLE WITH STANDARD QUICKTIME
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x79757634 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 6
+FileTime: 1264817361
+EndCodec
+BeginCodec: yv12
+LongName: 8 bit Planar YUV 4:2:0 (yv12)
+Description: 8 bit Planar YUV 4:2:0 (yv12)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 2
+Fourccs: 0x79763132 0x49343230 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 7
+FileTime: 1264817361
+EndCodec
+BeginCodec: 2vuy
+LongName: 8 bit Packed YUV 4:2:2 (2vuy)
+Description: 8 bit Packed YUV 4:2:2 (2vuy)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x32767579 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 8
+FileTime: 1264817361
+EndCodec
+BeginCodec: v210
+LongName: 10 bit packed YUV 4:2:2 (v210)
+Description: 10 bit packed YUV 4:2:2 (v210)
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x76323130 
+NumEncodingParameters: 0
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_videocodec.so
+ModuleIndex: 9
+FileTime: 1264817361
+EndCodec
+BeginCodec: jpeg
+LongName: JPEG photo
+Description: This format writes a seperate JPEG photo for every frame in YUV 4:2:0
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x6A706567 
+NumEncodingParameters: 2
+BeginParameterE: jpeg_quality
+RealName: Quality
+Type: Integer
+Value: 95
+ValueMin: 1
+ValueMax: 100
+EndParameter
+BeginParameterE: jpeg_usefloat
+RealName: Use float
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_mjpeg.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: mjpa
+LongName: Motion Jpeg A
+Description: MJPA stores each frame as two JPEGs interlaced and in YUV 4:2:2
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x6D6A7061 
+NumEncodingParameters: 2
+BeginParameterE: jpeg_quality
+RealName: Quality
+Type: Integer
+Value: 95
+ValueMin: 1
+ValueMax: 100
+EndParameter
+BeginParameterE: jpeg_usefloat
+RealName: Use float
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_mjpeg.so
+ModuleIndex: 1
+FileTime: 1264817361
+EndCodec
+BeginCodec: dv
+LongName: Quasar DV Codec (NTSC-Mode)
+Description: Codec for digital video camaras. Based on libdv (http://libdv.sourceforge.net/).
+Type: Video
+Direction: Encode
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x64766320 
+NumEncodingParameters: 5
+BeginParameterE: dv_anamorphic16x9
+RealName: Is Anamorphic 16x9
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: dv_vlc_encode_passes
+RealName: VLC Encode Passes
+Type: Integer
+Value: 3
+ValueMin: 1
+ValueMax: 3
+EndParameter
+BeginParameterE: dv_clamp_luma
+RealName: Clamp Luma Values
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: dv_clamp_chroma
+RealName: Clamp Chroma Values
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: dv_rem_ntsc_setup
+RealName: Compensate for 7.5IRE NTSC setup
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_dv.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: dv_pal
+LongName: Quasar DV Codec (PAL-Mode)
+Description: Codec for digital video camaras. Based on libdv (http://libdv.sourceforge.net/).
+Type: Video
+Direction: Encode
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x64766370 
+NumEncodingParameters: 5
+BeginParameterE: dv_anamorphic16x9
+RealName: Is Anamorphic 16x9
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: dv_vlc_encode_passes
+RealName: VLC Encode Passes
+Type: Integer
+Value: 3
+ValueMin: 1
+ValueMax: 3
+EndParameter
+BeginParameterE: dv_clamp_luma
+RealName: Clamp Luma Values
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: dv_clamp_chroma
+RealName: Clamp Chroma Values
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: dv_rem_ntsc_setup
+RealName: Compensate for 7.5IRE NTSC setup
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_dv.so
+ModuleIndex: 1
+FileTime: 1264817361
+EndCodec
+BeginCodec: x264
+LongName: H.264 (MPEG4 AVC) encoder
+Description: Based on the x264 library
+Type: Video
+Direction: Encode
+Compatibility: 00000013
+NumFourccs: 1
+Fourccs: 0x61766331 
+NumEncodingParameters: 47
+BeginParameterE: x264_frame_type
+RealName: Frame-type options
+Type: Section
+EndParameter
+BeginParameterE: x264_i_keyint_max
+RealName: Maximum GOP size
+Type: Integer
+Value: 250
+EndParameter
+BeginParameterE: x264_i_keyint_min
+RealName: Minimum GOP size
+Type: Integer
+Value: 25
+EndParameter
+BeginParameterE: x264_i_scenecut_threshold
+RealName: Scenecut threshold
+Type: Integer
+Value: 40
+HelpString: How aggressively to insert extra I-frames
+EndParameter
+BeginParameterE: x264_i_bframe
+RealName: B-Frames
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 16
+HelpString: Number of B-frames between I and P
+EndParameter
+BeginParameterE: x264_b_bframe_adaptive
+RealName: Adaptive B-frame decision
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_i_bframe_bias
+RealName: B-frame bias
+Type: Integer
+Value: 0
+ValueMin: -90
+ValueMax: 100
+HelpString: Influences how often B-frames are used
+EndParameter
+BeginParameterE: x264_b_bframe_pyramid
+RealName: B-frame pyramid
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+HelpString: Keep some B-frames as references
+EndParameter
+BeginParameterE: x264_ratecontrol
+RealName: Ratecontrol
+Type: Section
+EndParameter
+BeginParameterE: x264_i_rc_method
+RealName: Ratecontrol method
+Type: Stringlist
+Value: Constant quality
+NumOptions: 3
+Options: Constant quality
+Options: Average bitrate
+Options: CRF based VBR
+OptionLabels: Constant quality
+OptionLabels: Average bitrate
+OptionLabels: CRF based VBR
+HelpString: Ratecontrol method:\nConstant quality: Specify a quantizer parameter below\nAverage bitrate: Specify a bitrate below\nCRF based VBR: Specify a rate factor below\nSelecting 2-pass encoding will force Average bitrate.
+EndParameter
+BeginParameterE: x264_i_bitrate
+RealName: Bitrate
+Type: Integer
+Value: 0
+HelpString: Bitrate in kbit/s. 0 means VBR (recommended)
+EndParameter
+BeginParameterE: x264_f_rf_constant
+RealName: Nominal Quantizer parameter
+Type: Float
+Value: 26.000000
+ValueMin: 0.000000
+ValueMax: 51.000000
+NumDigits0
+HelpString: This selects the nominal quantizer to use (1 to 51). Lower values result in better fidelity, but higher bitrates. 26 is a good default value. 0 means lossless.
+EndParameter
+BeginParameterE: x264_i_qp_constant
+RealName: Quantizer parameter
+Type: Integer
+Value: 26
+ValueMin: 0
+ValueMax: 51
+HelpString: This selects the quantizer to use (1 to 51). Lower values result in better fidelity, but higher bitrates. 26 is a good default value. 0 means lossless.
+EndParameter
+BeginParameterE: x264_i_qp_min
+RealName: Minimum quantizer parameter
+Type: Integer
+Value: 10
+ValueMin: 0
+ValueMax: 51
+HelpString: Minimum quantizer parameter
+EndParameter
+BeginParameterE: x264_i_qp_max
+RealName: Maximum quantizer parameter
+Type: Integer
+Value: 51
+ValueMin: 0
+ValueMax: 51
+HelpString: Maximum quantizer parameter
+EndParameter
+BeginParameterE: x264_i_qp_step
+RealName: Maximum QP step
+Type: Integer
+Value: 4
+ValueMin: 1
+ValueMax: 50
+HelpString: Maximum quantizer step
+EndParameter
+BeginParameterE: x264_f_rate_tolerance
+RealName: Bitrate tolerance
+Type: Float
+Value: 1.000000
+ValueMin: 0.000000
+ValueMax: 100.000000
+NumDigits1
+HelpString: Allowed variance of average bitrate
+EndParameter
+BeginParameterE: x264_i_vbv_max_bitrate
+RealName: Maximum local bitrate
+Type: Integer
+Value: 0
+HelpString: Sets a maximum local bitrate in kbits/s.
+EndParameter
+BeginParameterE: x264_i_vbv_buffer_size
+RealName: VBV Buffer size
+Type: Integer
+Value: 0
+HelpString: Averaging period for the maximum local bitrate. Measured in kbits.
+EndParameter
+BeginParameterE: x264_f_vbv_buffer_init
+RealName: Initial VBV buffer occupancy
+Type: Float
+Value: 0.900000
+ValueMin: 0.000000
+ValueMax: 1.000000
+NumDigits2
+HelpString: Sets the initial VBV buffer occupancy as a fraction of the buffer size.
+EndParameter
+BeginParameterE: x264_f_ip_factor
+RealName: QP factor between I and P
+Type: Float
+Value: 1.400000
+NumDigits2
+EndParameter
+BeginParameterE: x264_f_pb_factor
+RealName: QP factor between P and B
+Type: Float
+Value: 1.300000
+NumDigits2
+EndParameter
+BeginParameterE: x264_partitions
+RealName: Partitions
+Type: Section
+EndParameter
+BeginParameterE: x264_analyse_8x8_transform
+RealName: 8x8 transform
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_analyse_psub16x16
+RealName: 8x16, 16x8 and 8x8 P-frame search
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_analyse_bsub16x16
+RealName: 8x16, 16x8 and 8x8 B-frame search
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_analyse_psub8x8
+RealName: 4x8, 8x4 and 4x4 P-frame search
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_analyse_i8x8
+RealName: 8x8 Intra search
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+HelpString: 8x8 Intra search requires 8x8 transform
+EndParameter
+BeginParameterE: x264_analyse_i4x4
+RealName: 4x4 Intra search
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_me
+RealName: Motion estimation
+Type: Section
+EndParameter
+BeginParameterE: x264_i_me_method
+RealName: Method
+Type: Stringlist
+Value: Hexagonal search
+NumOptions: 4
+Options: Diamond search
+Options: Hexagonal search
+Options: Uneven Multi-Hexagon
+Options: Exhaustive search
+OptionLabels: Diamond search
+OptionLabels: Hexagonal search
+OptionLabels: Uneven Multi-Hexagon
+OptionLabels: Exhaustive search
+HelpString: Motion estimation method\nDiamond search: fastest\nHexagonal search: default setting\nUneven Multi-Hexagon: better but slower\nExhaustive search: extremely slow, primarily for testing
+EndParameter
+BeginParameterE: x264_i_subpel_refine
+RealName: Partition decision
+Type: Integer
+Value: 5
+ValueMin: 1
+ValueMax: 7
+HelpString: Subpixel motion estimation and partition decision quality: 1=fast, 7=best.
+EndParameter
+BeginParameterE: x264_b_bframe_rdo
+RealName: RD based mode decision for B-frames
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+HelpString: RD based mode decision for B-frames. Requires partition decision 6.
+EndParameter
+BeginParameterE: x264_i_me_range
+RealName: Search range
+Type: Integer
+Value: 16
+HelpString: Maximum distance to search for motion estimation, measured from predicted position(s). Default of 16 is good for most footage, high motion sequences may benefit from settings between 24-32.
+EndParameter
+BeginParameterE: x264_i_frame_reference
+RealName: Max Ref. frames
+Type: Integer
+Value: 1
+ValueMin: 1
+ValueMax: 16
+HelpString: This is effective in Anime, but seems to make little difference in live-action source material. Some decoders are unable to deal with large frameref values.
+EndParameter
+BeginParameterE: x264_b_chroma_me
+RealName: Chroma motion estimation
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+EndParameter
+BeginParameterE: x264_b_mixed_references
+RealName: Mixed references
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+HelpString: Allow each MB partition in P-frames to have it's own reference number
+EndParameter
+BeginParameterE: x264_b_bidir_me
+RealName: Bidirectional ME
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+HelpString: Jointly optimize both MVs in B-frames
+EndParameter
+BeginParameterE: x264_b_weighted_bipred
+RealName: Weighted biprediction
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 1
+HelpString: Implicit weighting for B-frames
+EndParameter
+BeginParameterE: x264_i_direct_mv_pred
+RealName: Direct MV prediction mode
+Type: Stringlist
+Value: Spatial
+NumOptions: 4
+Options: None
+Options: Spatial
+Options: Temporal
+Options: Auto
+OptionLabels: None
+OptionLabels: Spatial
+OptionLabels: Temporal
+OptionLabels: Auto
+EndParameter
+BeginParameterE: x264_misc
+RealName: Misc
+Type: Section
+EndParameter
+BeginParameterE: x264_b_deblocking_filter
+RealName: Deblocking filter
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+HelpString: Use deblocking loop filter (increases quality).
+EndParameter
+BeginParameterE: x264_i_deblocking_filter_alphac0
+RealName: Deblocking filter strength
+Type: Integer
+Value: 0
+ValueMin: -6
+ValueMax: 6
+HelpString: Loop filter AlphaC0 parameter
+EndParameter
+BeginParameterE: x264_i_deblocking_filter_beta
+RealName: Deblocking filter threshold
+Type: Integer
+Value: 0
+ValueMin: -6
+ValueMax: 6
+HelpString: Loop filter Beta parameter
+EndParameter
+BeginParameterE: x264_b_cabac
+RealName: Enable CABAC
+Type: Integer
+Value: 1
+ValueMin: 0
+ValueMax: 1
+HelpString: Enable CABAC (Context-Adaptive Binary Arithmetic Coding). Slightly slows down encoding and decoding, but should save 10-15% bitrate.
+EndParameter
+BeginParameterE: x264_i_trellis
+RealName: Trellis RD quantization
+Type: Stringlist
+Value: Disabled
+NumOptions: 3
+Options: Disabled
+Options: Enabled (final)
+Options: Enabled (always)
+OptionLabels: Disabled
+OptionLabels: Enabled (final)
+OptionLabels: Enabled (always)
+HelpString: Trellis RD quantization. Requires CABAC. Can be enabled either for the final encode of a MB or for all mode desisions
+EndParameter
+BeginParameterE: x264_i_noise_reduction
+RealName: Noise reduction
+Type: Integer
+Value: 0
+ValueMin: 0
+ValueMax: 65536
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_x264.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec
+BeginCodec: rtjpeg
+LongName: RTjpeg
+Description: RTjpeg - real time lossy codec.
+Type: Video
+Direction: Both
+Compatibility: 00000003
+NumFourccs: 1
+Fourccs: 0x52544A30 
+NumEncodingParameters: 4
+BeginParameterE: rtjpeg_quality
+RealName: Quality setting
+Type: Integer
+Value: 100
+ValueMin: 0
+ValueMax: 100
+EndParameter
+BeginParameterE: rtjpeg_key_rate
+RealName: Key frame interval
+Type: Integer
+Value: 25
+EndParameter
+BeginParameterE: rtjpeg_luma_quant
+RealName: Luma quantiser
+Type: Integer
+Value: 1
+EndParameter
+BeginParameterE: rtjpeg_chroma_quant
+RealName: Chroma quantiser
+Type: Integer
+Value: 1
+EndParameter
+NumDecodingParameters: 0
+ModuleFilename: /usr/lib/libquicktime/lqt_rtjpeg.so
+ModuleIndex: 0
+FileTime: 1264817361
+EndCodec

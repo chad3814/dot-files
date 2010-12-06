@@ -1,0 +1,16 @@
+# ignore everything
+*
+# except file starting with .
+!/.*
+# explicitly add dot directories
+!/.*/*
+# and their subdirectories
+!/.*/*/
+# exceptions to the exception
+/.*history
+/.lesshst
+/.esd_auth
+/.rnd
+/.ssh/id_rsa
+/.subversion
+/.cpan
