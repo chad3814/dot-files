@@ -1,5 +1,5 @@
 ;; .emacs
-(menu-bar-mode)
+(menu-bar-mode nil)
 ;(tool-bar-mode)
 
 ;; midnight-mode cleans up unused buffers
