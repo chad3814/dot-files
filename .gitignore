@@ -20,3 +20,5 @@
 /.dvdcss/
 .org.eclipse.epp.usagedata.recording.userId
 .p4tickets
+.gnupg
+.viminfo

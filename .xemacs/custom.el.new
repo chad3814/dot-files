@@ -1,0 +1,169 @@
+;;  Start the emacsclient server
+;(gnuserv-start)
+
+;;  Configuration for default mode (text-mode)
+;;  This will automatically put you in text mode when using emacs
+;(setq-default default-major-mode 'text-mode)
+;; (setq-default text-mode-hook 'turn-on-auto-fill)
+;; (add-hook 'text-mode-hook 'refill-mode)
+;(setq fill-column 70)
+;; (text-mode)
+;; Elisp is cool now, so...
+
+; This will shut off the *~ files (reduces the emacs-droppings that
+; clutter your directory)
+;(setq make-backup-files nil)
+; give the control-x control-f command.  the control-x f command resets
+; the fill column.  to keep me from making this mistake, the next
+; keybinding unsets the command.
+
+(global-unset-key "\C-xf")
+
+(require 'p4)
+(setq load-path (append (list "/usr/share/emacs/site-lisp")
+			load-path))
+(require 'ediff)
+
+;;;; rebinding of control-x control-b: for `buffer-menu'
+
+; the following rebinds control-x control-b to the buffer-menu command
+; rather than the list-buffers command.  the buffer-menu command not
+; only lists the buffers, but selects the *buffer list* for editing.
+
+(global-set-key "\C-x\C-b" 'buffer-menu)
+
+;;;; personal keybindings.  most of these use the c-c map, which is
+;;;; available only to the user of emacs, not to the programmer of any
+;;;; package.
+;;;; ----------------------------------------------------------------
+
+;(global-set-key "\M-s"     'isearch-backward)
+;(global-set-key "\C-ci"   'config-buffer-in)
+;(global-set-key "\C-co"   'config-buffer-out)
+
+;(global-set-key "\C-cm"   'recompile)
+;(global-set-key "\C-c\C-m" 'recompile-and-iconify)
+
+(global-set-key "\C-cl"   'goto-line)
+;(global-set-key "\C-cw"   'what-line)
+
+;(global-set-key "\C-ca"   'add-change-log-entry)
+;(global-set-key "\C-cd"   'insert-date-at-point)
+;(global-set-key "\C-c\C-w" 'count-words-buffer)	;my word counter...
+;(global-set-key "\C-c\C-l" 'count-lines-buffer) ;my line counter...
+;(global-set-key "\C-m"    'newline-and-indent)
+(global-set-key "\er"     'replace-string)
+;(global-set-key "\es"     'save-buffer)
+(global-set-key "\eq"     'quoted-insert)
+
+;(menu-bar-mode '0)
+
+
+;(put 'eval-expression 'disabled nil)
+
+;(defun recompile-and-iconify ()
+;  "Recompiles and iconifies the frame."
+;  (interactive)
+;  (recompile)
+;  (suspend-emacs-or-iconify-frame))
+
+;(defun count-words-buffer ()
+;  "Count the number of words in the current buffer;
+;print a message in the minibuffer with the result."
+;  (interactive)
+;  (save-excursion
+;    (let ((count 0))
+;      (goto-char (point-min))
+;      (while (< (point) (point-max))
+;	(forward-word 1)
+;	(setq count (1+ count)))
+;      (message "buffer contains %d words." count))))
+
+;(defun count-lines-buffer ()
+;  "Count the number of lines in the current buffer;
+;print a message in the minibuffer with the result."
+;  (interactive)
+;  (save-excursion
+;    (let ((count 0))
+;      (goto-char (point-min))
+;      (while (< (point) (point-max))
+;	(next-line 1)
+;	(setq count (1+ count)))
+;      (message "buffer contains %d lines." count))))
+
+;; autoloads for my own modes...
+;;
+;(autoload 'calc-mode "calc" "Calculator Mode." t)
+				     ; calculator mode...$HOME/.elisp/calc.elc
+;(autoload 'refill-mode "refill" "Refill Minor Mode." t)
+				     ; refill minor mode... .elisp/refill.elc
+;(autoload 'quip-mode "quip" "Quip Mode." t)
+				     ; quip mode... $HOME/.elisp/quip.elc
+;;;;;;;;;;;;;;;; mode setups ;;;;;;;;;;;;;;;;
+
+(defconst xfire-c-style
+  '((c-basic-offset . 4)
+    (fill-column    . 80)
+    (c-tab-always-indent           . t)
+    (c-label-minimum-indentation   . 0)
+    (c-comment-only-line-offset    . (0 . 0))
+    (c-hanging-braces-alist        . ((class-close)
+				      (brace-list-close)
+				      (brace-list-intro)
+				      (brace-list-open)))
+    (c-hanging-colons-alist        . ((member-init-intro before)
+				      (inher-intro)
+				      (case-label after)
+				      (label after)
+				      (access-label after)))
+    (c-offsets-alist . ((topmost-intro        . 0)
+			(topmost-intro-cont   . 0)
+			(substatement         . +)
+			(substatement-open    . 0)
+			(statement-case-intro . +)
+			(case-label           . 0)
+			(access-label         . -)
+			(label                . -)
+			(inline-open          . 0)))
+    )
+  
+  "Xfire C Programming Style")
+     
+;; Customizations for all of c-mode, c++-mode, and objc-mode
+(defun xfire-c-mode-hook ()
+  ;; add the xfire style and set it for the current buffer
+  (c-add-style "xfire" xfire-c-style t)
+  ;; other customizations
+  (setq tab-width 4) 
+  )
+
+;(add-hook 'c-mode-common-hook 'chris-c-mode-common-hook)
+(add-hook 'c-mode-hook 'xfire-c-mode-hook)
+(add-hook 'c++-mode-hook 'xfire-c-mode-hook)
+(add-hook 'objc-mode-hook 'xfire-c-mode-hook)
+(add-hook 'java-mode-hook 'xfire-c-mode-hook)
+(add-hook 'javascript-mode-hook 'xfire-c-mode-hook)
+(add-hook 'php-mode-hook 'xfire-c-mode-hook)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(custom-set-variables
+ '(font-lock-auto-fontify nil)
+ '(gnuserv-frame t)
+ '(query-user-mail-address nil))
+;(require 'pcl-cvs)
+(set-face-background 'default "MidnightBlue")
+(set-face-foreground 'default "#FFFF00")
+(line-number-mode 't)
+
+;(add-to-list 'load-path "~jmacnish/lisp/tramp/lisp/")
+;(require 'tramp)
+;(setq tramp-default-method "scp")
+(custom-set-faces
+ '(p4-diff-ins-face ((t (:foreground "light sea green"))) t)
+ '(p4-depot-unmapped-face ((t (:foreground "white"))) t)
+ '(p4-depot-branch-op-face ((t (:foreground "Dark Grey"))) t)
+ '(p4-diff-file-face ((t (:foreground "gold"))) t)
+ '(p4-diff-change-face ((t (:foreground "green"))) t)
+ '(p4-diff-head-face ((t (:foreground "GoldenRod"))) t))
