@@ -27,3 +27,15 @@ cd () {
 }
 
 winheader
+
+function ptime()
+{
+        perl -e 'print scalar localtime('$*'), "\n";'
+}
+
+wiki()
+{
+    lookup=${1// /_}
+    dig +short txt $lookup.wp.dg.cx
+}
+

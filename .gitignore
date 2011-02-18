@@ -12,6 +12,15 @@
 /.esd_auth
 /.rnd
 /.ssh/id_rsa
+/.ssh/id_rsa.pub
 /.subversion
 /.cpan
 /.gnupg
+.DS_Store
+/.cups/
+/.dvdcss/
+.org.eclipse.epp.usagedata.recording.userId
+.p4tickets
+.gnupg
+.viminfo
+

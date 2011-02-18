@@ -1,42 +1,3 @@
-;; .emacs
-(menu-bar-mode -1)
-;(tool-bar-mode)
-
-;; midnight-mode cleans up unused buffers
-(require 'midnight)
-
-;; This stores all the ~ files in ~/.emacs.backups
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-
-;;; uncomment this line to disable loading of "default.el" at startup
-;; (setq inhibit-default-init t)
-
-;; This controls the "visual" line movement as opposed to real line movement
-;; comment out to return to visual mode
-(setq line-move-visual nil)
-
-;; turn on font-lock mode
-(when (fboundp 'global-font-lock-mode)
-  (global-font-lock-mode t))
-
-;; enable visual feedback on selections
-(setq transient-mark-mode t)
-
-;; default to better frame titles
-(setq frame-title-format
-      (concat  "%b - emacs@" system-name))
-
-;; geben
-(autoload 'geben "geben" "PHP Debugger on Emacs" t)
-
-;; multi-term
-(autoload 'mutli-term "multi-term" nil t)
-(autoload 'multi-term-next "multi-term" nil t)
-(setq multi-term-program "/bin/zsh")	;; use zsh...
-(global-set-key (kbd "C-c t") 'multi-term-next) ;; goto next terminal or create a new one
-(global-set-key (kbd "C-c T") 'multi-term) ;; create a new one
-
-;;;;; Below is copied from my old .emacs
 ;;  Start the emacsclient server
 ;(gnuserv-start)
 
@@ -58,20 +19,11 @@
 
 (global-unset-key "\C-xf")
 
-(setq load-path (append (list "~/.emacs.d/elisp" "/usr/share/emacs/site-lisp")
+(setq load-path (append (list "/usr/share/emacs/site-lisp" "/home/chad/.elisp")
 			load-path))
-
 (require 'p4)
 (require 'ediff)
-(require 'linum)
 ;(require 'color-theme)
-(require 'php-mode)
-(require 'tramp)
-(require 'zenburn)
-(color-theme-zenburn)
-
-(add-to-list 'tramp-default-user-alist
-	     '("ssh" "xfire-.*-[0-9]+\\'" "ua"))
 
 ;;;; rebinding of control-x control-b: for `buffer-menu'
 
@@ -104,36 +56,8 @@
 (global-set-key "\er"     'replace-string)
 ;(global-set-key "\es"     'save-buffer)
 (global-set-key "\eq"     'quoted-insert)
-(global-set-key "\C-cL"   'linum-mode)
-(global-set-key (kbd "<f3>") 'repeat-isearch-or-prompt)
+
 ;(menu-bar-mode '0)
-
-(defun check-php-file-name ()
-  "Checks the `buffer-file-name' to see if it resides in 'src.php/v4' and is either index.inc or template.tmpl"
-  (if (and
-       (stringp buffer-file-name)
-       (or
-	(setq fpos (string-match "/index\.inc$" buffer-file-name))
-	(setq fpos (string-match "/index\.php$" buffer-file-name))
-	(setq fpos (string-match "/template\.tmpl$" buffer-file-name)))
-       (or
-	(string-match "/src.php/v4/modules/" buffer-file-name)
-	(string-match "/src.php/v4/pages/" buffer-file-name))
-       )
-      (if (string= ".tmpl" (substring buffer-file-name -5))
-	  (rename-buffer (concat (substring buffer-file-name (match-end 0) fpos) ".tmpl"))
-	(rename-buffer (concat (substring buffer-file-name (match-end 0) fpos) (substring buffer-file-name -4))))))
-
-(add-hook 'php-mode-hook 'check-php-file-name)
-(add-hook 'html-mode-hook 'check-php-file-name)
-(setq auto-mode-alist (cons '("\\.tmpl$" . html-mode) auto-mode-alist))
-
-(defun repeat-isearch-or-prompt ()
-  "If the search-ring is nil, then it prompts"
-  (interactive)
-  (if search-ring
-      (isearch-repeat-forward)
-    (isearch-forward)))
 
 
 ;(put 'eval-expression 'disabled nil)
@@ -177,7 +101,6 @@
 ;(autoload 'quip-mode "quip" "Quip Mode." t)
 				     ; quip mode... $HOME/.elisp/quip.elc
 ;;;;;;;;;;;;;;;; mode setups ;;;;;;;;;;;;;;;;
-(setq indent-tabs-mode t)
 
 (defconst xfire-c-style
   '((c-tab-always-indent        . t)
@@ -258,48 +181,21 @@
 
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(font-lock-auto-fontify nil)
  '(gnuserv-frame t)
  '(query-user-mail-address nil))
 ;(require 'pcl-cvs)
-;(set-face-background 'default "#000060")
-;(set-face-foreground 'default "#FFFF00")
+(set-face-background 'default "MidnightBlue")
+(set-face-foreground 'default "#FFFF00")
 (line-number-mode t)
 
 ;(add-to-list 'load-path "~jmacnish/lisp/tramp/lisp/")
 ;(require 'tramp)
 ;(setq tramp-default-method "scp")
-;; (custom-set-faces
-;;   ;; custom-set-faces was added by Custom.
-;;   ;; If you edit it by hand, you could mess it up, so be careful.
-;;   ;; Your init file should contain only one such instance.
-;;   ;; If there is more than one, they won't work right.
-;;  '(custom-comment-tag ((((class color) (background light)) (:foreground "yellow"))))
-;;  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face))))
-;;  '(font-lock-comment-face ((((class color) (min-colors 8) (background light)) (:foreground "green"))))
-;;  '(font-lock-string-face ((((class color) (min-colors 8)) (:foreground "white" :weight bold))))
-;;  '(link ((((class color) (background light)) (:foreground "white" :underline t))))
-;;  '(minibuffer-prompt ((t (:foreground "Red" :weight bold))))
-;;  '(p4-depot-branch-op-face ((t (:foreground "Dark Grey"))) t)
-;;  '(p4-depot-unmapped-face ((t (:foreground "white"))) t)
-;;  '(p4-diff-change-face ((t (:foreground "green"))) t)
-;;  '(p4-diff-file-face ((t (:foreground "gold"))) t)
-;;  '(p4-diff-head-face ((t (:foreground "GoldenRod"))) t)
-;;  '(p4-diff-ins-face ((t (:foreground "light sea green"))) t)
-;;  '(speedbar-directory-face ((((class color) (background light)) (:foreground "yellow"))))
-;;  '(tool-bar ((default (:foreground "grey" :box (:line-width 1 :style released-button))) (nil nil)))
-;;  '(vhdl-speedbar-architecture-face ((((class color) (background light)) (:foreground "yellow"))))
-;;  '(vhdl-speedbar-architecture-selected-face ((((class color) (background light)) (:foreground "yellow" :underline t)))))
-
-(unless (zenburn-format-spec-works-p)
-  (zenburn-define-format-spec))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(font-lock-warning-face ((t (:inherit font-lock-warning :background "black")))))
+ '(p4-diff-ins-face ((t (:foreground "light sea green"))) t)
+ '(p4-depot-unmapped-face ((t (:foreground "white"))) t)
+ '(p4-depot-branch-op-face ((t (:foreground "Dark Grey"))) t)
+ '(p4-diff-file-face ((t (:foreground "gold"))) t)
+ '(p4-diff-change-face ((t (:foreground "green"))) t)
+ '(p4-diff-head-face ((t (:foreground "GoldenRod"))) t))

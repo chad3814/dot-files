@@ -1,11 +1,6 @@
-EMACS=`which emacs`
-if [[ ! -e /tmp/emacs${UID}/server ]]
-then
-    # start an emacs daemon
-    echo
-    $EMACS --daemon
-fi
+export PATH=/usr/local/bin:$PATH
 
-alias emacs="emacsclient -t -a $EMACS \$*"
+export EMACS=`which emacs`
+alias emacs='emacsclient -t -a "" $*'
 alias realemacs=$EMACS
 alias stopemacs='emacsclient --eval "(progn (save-some-buffers t t) (kill-emacs))"'
