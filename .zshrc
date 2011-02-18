@@ -17,4 +17,6 @@ export LESS=-cEX4M
 export EDITOR="emacsclient -t"
 export VISUAL="emacsclient -t"
 export PAGER=less
+export FLEX_HOME=/opt/flex_sdk_3.5
 
+export PATH=$FLEX_HOME/bin:$PATH
