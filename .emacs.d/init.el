@@ -61,7 +61,7 @@
 (setq load-path (append (list "~/.emacs.d/elisp" "/usr/share/emacs/site-lisp")
 			load-path))
 
-(require 'p4)
+;(require 'p4)
 (require 'ediff)
 (require 'linum)
 ;(require 'color-theme)
@@ -297,6 +297,13 @@
 
 (unless (zenburn-format-spec-works-p)
   (zenburn-define-format-spec))
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(cursor-type (quote box)))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
