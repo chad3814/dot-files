@@ -153,10 +153,10 @@ function setprompt() {
     [[ -n ${vcs_info_msg_0_} ]] && infoline+=( "${vcs_info_msg_0_}" )
 
     ### Finally, set the prompt
-    PROMPT="${infoline}%# "
+    PROMPT="${infoline}%# $reset"
 
     # handle the right prompt
     [[ -n ${vcs_info_msg_3_} ]] && [[ ${vcs_info_msg_3_} = '.' ]] && infoline=( "${vcs_info_msg_4_}" ) || infoline=( "${vcs_info_msg_3_}" )
-    [[ -n ${vcs_info_msg_1_} ]] && RPROMPT=" ${vcs_info_msg_1_}$infoline" || RPROMPT=' %h:%B%c%b'
-    [[ -n ${vcs_info_msg_2_} ]] && RPROMPT=" ${red}${vcs_info_msg_2_}\$ ${white}${vcs_info_msg_1_}$infoline"
+    [[ -n ${vcs_info_msg_1_} ]] && RPROMPT=" ${vcs_info_msg_1_}$infoline${reset}" || RPROMPT=' %h:%B%c%b'
+    [[ -n ${vcs_info_msg_2_} ]] && RPROMPT=" ${red}${vcs_info_msg_2_}\$ ${white}${vcs_info_msg_1_}$infoline${reset}"
 }
