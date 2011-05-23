@@ -23,4 +23,6 @@
 .p4tickets
 .gnupg
 .viminfo
-
+.cache
+.sudo_as_admin_successful
+.profile
