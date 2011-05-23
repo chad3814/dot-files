@@ -26,3 +26,17 @@
 .cache
 .sudo_as_admin_successful
 .profile
+.CFUserTextEncoding
+.Xauthority
+.account
+.dbshell
+.dropbox
+.fontconfig
+.gitk
+.jenkins
+.macports
+.pearrc
+.rightscale
+.ssh/rightscale_rsa
+# aquamacs is not right, or maybe it's me
+.emacs
