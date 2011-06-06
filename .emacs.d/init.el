@@ -210,8 +210,8 @@
   "Set the Xfire C programming style"
   ;; add and set style
   (c-add-style "xfire" xfire-c-style t)
-  ;;don't use spaces instead of tabs
-  (setq indent-tabs-mode t)
+  ;;use spaces instead of tabs
+  (setq indent-tabs-mode nil)
   ;; keep working files when I check in RCS/CVS files
   (setq vc-keep-workfiles t)
   ;; auto-indent

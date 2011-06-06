@@ -37,6 +37,6 @@
 .macports
 .pearrc
 .rightscale
-.ssh/rightscale_rsa
+.ssh/rs_id_rsa
 # aquamacs is not right, or maybe it's me
 .emacs
