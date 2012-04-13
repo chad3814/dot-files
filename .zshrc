@@ -17,7 +17,9 @@ chosts=(chris3: chris4: yulius4: chad3: web1: bfields2: gbenson2: kwilson2: neto
 export PATH="$HOME/bin:/opt/local/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin:/opt/mysql/product/5.0.45/bin:/usr/local/git/bin"
 TZ=US/Pacific
 
-source ~/.aliases
+if [ -e ~/.aliases ] ; then
+    source ~/.aliases
+fi
 
 export MAILCALL='You have new mail.'
 export YOUSAID='In %C you wrote:'
@@ -51,7 +53,7 @@ case $TERM in
 	alias winheader='echo -n "]l$host : ${PWD}\";echo -n "]L$host\"'
     ;;
 
-    xterm )
+    xterm* )
 	alias winheader='echo -n "]2;"$host" : ${PWD}]1;"$host""'
     ;;
 
@@ -113,6 +115,10 @@ function +vi-git-st() {
         --symbolic-full-name --abbrev-ref 2>/dev/null)}
 
     if [[ -n ${remote} ]] ; then
+	# split remote into remote-name and branch
+	rbranch=${remote#*/}
+	remote_name=${remote%%/*}
+
         # for git prior to 1.7
         # ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
         ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | awk '{print $NF}')
@@ -121,6 +127,13 @@ function +vi-git-st() {
         # behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
         behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | awk '{print $NF}')
 
+	if [[ "$remote_name" = "origin" ]] ; then
+	    if [[ "$rbranch" = "${hook_com[branch]}" ]] ; then
+		remote=""
+	    else
+		remote=$rbranch
+	    fi
+	fi
         hook_com[branch]="${hook_com[branch]} ${white}[${yellow}${remote}${green}+${ahead}${white}/${red}-${behind}${white}]"
     fi
 }
