@@ -2,33 +2,38 @@
 
 mkdir ~/.dots-backup
 
-for x in `/bin/ls -1A`
-{
-    if [ -f "$x" ] ; then
-	if [ -e "$HOME/$x" ] ; then
-	    echo "Moving $x..."
-	    mv $HOME/$x $HOME/.dots-backup
-	fi
-	echo "Linking $x..."
-	ln $x $HOME/$x
-    fi
-    if [ -d "$x" -a "$x" != ".git" ] ; then
-	if [ ! -e "$HOME/$x" ] ; then
-	    echo "Making directory $x..."
-	    mkdir $HOME/$x
-	fi
-	echo "Making directory .dots-backups/$x..."
-	mkdir $HOME/.dots-backup/$x
-	cd $x
-	for y in `/bin/ls -1A`
-	{
-	    if [ -e "$HOME/$x/$y" ] ; then
-		echo "Moving $x/$y..."
-		mv $HOME/$x/$y $HOME/.dots-backup/$x
+function process_dir() {
+    local dir
+    dir=$1
+    shift
+
+    pushd $dir >/dev/null
+
+    for x in `/bin/ls -1A`
+    {
+	if [ -f "$x" ] ; then
+	    if [ -e "$HOME/$dir/$x" ] ; then
+		echo "Moving $dir/$x..."
+		mv $HOME/$dir/$x $HOME/.dots-backup/$dir/
 	    fi
-	    echo "Linking $y/$x..."
-	    ln $y $HOME/$x/$y
-	}
-	cd ..
-    fi
+	    echo "Linking $dir/$x..."
+	    ln $x $HOME/$dir/$x
+	fi
+	if [ -d "$x" -a "$x" != ".git" ] ; then
+	    if [ ! -e "$HOME/$x" ] ; then
+		echo "Making directory $dir/$x..."
+		mkdir $HOME/$dir/$x
+	    fi
+	    echo "Making directory .dots-backups/$dir/$x..."
+	    mkdir $HOME/.dots-backup/$dir/$x
+
+	    popd >/dev/null
+	    process_dir "$dir/$x"
+	    pushd $dir >/dev/null
+	fi
+    }
+    popd >/dev/null
 }
+
+cd `dirname $0`
+process_dir .
