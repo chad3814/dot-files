@@ -27,7 +27,7 @@
       (concat  "%b - emacs@" system-name))
 
 ;; geben
-(autoload 'geben "geben" "PHP Debugger on Emacs" t)
+;(autoload 'geben "geben" "PHP Debugger on Emacs" t)
 
 ;; multi-term
 (autoload 'mutli-term "multi-term" nil t)
@@ -69,6 +69,48 @@
 (require 'tramp)
 (require 'zenburn)
 (color-theme-zenburn)
+
+;; auto-complete config
+(require 'auto-complete-config)
+; Make sure we can find the dictionaries
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/ac-dict")
+; Use dictionaries by default
+(setq-default ac-sources (add-to-list 'ac-sources 'ac-source-dictionary))
+(global-auto-complete-mode t)
+; Start auto-completion after 2 characters of a word
+(setq ac-auto-start 2)
+; make case sensitive
+(setq ac-ignore-case nil)
+
+;; flymake jslint
+(add-to-list 'load-path "~/lintnode")
+(require 'flymake-jslint)
+;; Make sure we can find the lintnode executable
+(setq lintnode-location "~/lintnode")
+(setq lintnode-node-program "/opt/local/bin/node")
+;; JSLint can be... opinionated
+(setq lintnode-jslint-set "node:true")
+(setq lintnode-jslint-includes (list 'vars 'plusplus 'stupid 'fragment))
+(setq lintnode-jslint-excludes (list 'onevar 'white))
+; make flymake ignore a non-zero return from the curl; it treats it like an error
+(defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
+    (setq flymake-check-was-interrupted t))
+(ad-activate 'flymake-post-syntax-check)
+;; Start the server when we first open a js file and start checking
+(add-hook 'js-mode-hook
+          (lambda ()
+            (lintnode-hook)))
+
+;; Nice Flymake minibuffer messages
+(require 'flymake-cursor)
+
+;; code folding for js-mode
+(add-hook 'js-mode-hook
+          (lambda ()
+            ;; Scan the file for nested code blocks
+            (imenu-add-menubar-index)
+            ;; Activate the folding mode
+            (hs-minor-mode t)))
 
 (add-to-list 'tramp-default-user-alist
 	     '("ssh" "xfire-.*-[0-9]+\\'" "ua"))
@@ -177,7 +219,7 @@
 ;(autoload 'quip-mode "quip" "Quip Mode." t)
 				     ; quip mode... $HOME/.elisp/quip.elc
 ;;;;;;;;;;;;;;;; mode setups ;;;;;;;;;;;;;;;;
-(setq indent-tabs-mode t)
+(setq indent-tabs-mode nil)
 
 (defconst xfire-c-style
   '((c-tab-always-indent        . t)
