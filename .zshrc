@@ -25,8 +25,8 @@ export MAILCALL='You have new mail.'
 export YOUSAID='In %C you wrote:'
 export ATTRIBUTION='%f wrote:'
 export LESS=-cEX4M
-export EDITOR="emacsclient -t"
-export VISUAL="emacsclient -t"
+export EDITOR="emacsclient"
+export VISUAL="emacsclient"
 export FLEX_HOME=/opt/flex_sdk_3.5
 
 export PATH=$FLEX_HOME/bin:$PATH

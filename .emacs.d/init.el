@@ -2,6 +2,11 @@
 (menu-bar-mode -1)
 ;(tool-bar-mode)
 
+;; server stufff
+(server-start)
+(setq server-window 'switch-to-buffer-other-frame)
+(add-hook 'server-done-hook 'close-window)
+
 ;; midnight-mode cleans up unused buffers
 (require 'midnight)
 
@@ -220,6 +225,7 @@
 				     ; quip mode... $HOME/.elisp/quip.elc
 ;;;;;;;;;;;;;;;; mode setups ;;;;;;;;;;;;;;;;
 (setq indent-tabs-mode nil)
+(setq-default require-final-newline t)
 
 (defconst xfire-c-style
   '((c-tab-always-indent        . t)
@@ -288,13 +294,30 @@
   ;; line numbers
   (line-number-mode t))
 
+(defun grokker-js-mode-hook ()
+  "Set the Grokker JS programming style"
+  ;;use spaces instead of tabs
+  (setq indent-tabs-mode nil)
+  ;; auto-indent
+  (setq c-tab-always-indent t)
+  (c-toggle-auto-hungry-state 1)
+  ;; set the tab size to 4, 8 is too big
+  (setq tab-width 4)
+  ;; auto-indent to the proper position on a return
+  (local-set-key "\C-m" 'newline-and-indent)
+  ;; line numbers
+  (line-number-mode t)
+  ;; delete trailing whitespace on every line
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+
 (add-hook 'c-mode-hook 'xfire-c-mode-hook)
 (add-hook 'c++-mode-hook 'xfire-c-mode-hook)
 (add-hook 'objc-mode-hook 'xfire-c-mode-hook)
 (add-hook 'java-mode-hook 'xfire-c-mode-hook)
-(add-hook 'javascript-mode-hook 'xfire-c-mode-hook)
+;(add-hook 'javascript-mode-hook 'xfire-c-mode-hook)
 (add-hook 'php-mode-hook 'xfire-c-mode-hook)
 (add-hook 'cperl-mode-hook 'xfire-perl-mode-hook)
+(add-hook 'js-mode-hook 'grokker-js-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
