@@ -8,8 +8,8 @@ cdpath=(.)
 umask 022
 fignore=(.o ~)
 setenv() { export $1=$2 }  # csh compatibility
-hosts=(chris3 chris4 yulius4 chad3 web1 bfields2 gbenson2 kwilson2 netops{1,2}.corp.xfire.com db1 xfire-stage-{1,2} xfire-stagemysql-1 xfire-mysql-{1,2,3} xfire-utility-{1,2})
-chosts=(chris3: chris4: yulius4: chad3: web1: bfields2: gbenson2: kwilson2: netops{1,2}.corp.xfire.com: db1: xfire-stage-{1,2}: xfire-stagemysql-1: xfire-mysql-{1,2,3}: xfire-utility-{1,2}:)
+hosts=(stage prod utility stage.grokker.com grokker.com utiliity.gr0k.us atlas atlas.corp.grokker.com polyphemus polyphemus.corp.grokker.com)
+chosts=(stage: prod: utility: stage.grokker.com: grokker.com: utiliity.gr0k.us: atlas: atlas.corp.grokker.com: polyphemus: polyphemus.corp.grokker.com:)
 #PROMPT='<%B%n%b> <%~> %m%% '    # default prompt
 #PROMPT='[%B%t%b] %h [%c]:%m%# ' # Old Mike standard
 #PROMPT='%B%t%b-%m%# '
