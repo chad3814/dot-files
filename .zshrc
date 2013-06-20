@@ -8,8 +8,8 @@ cdpath=(.)
 umask 022
 fignore=(.o ~)
 setenv() { export $1=$2 }  # csh compatibility
-hosts=(stage prod utility stage.grokker.com grokker.com utiliity.gr0k.us atlas atlas.corp.grokker.com polyphemus polyphemus.corp.grokker.com)
-chosts=(stage: prod: utility: stage.grokker.com: grokker.com: utiliity.gr0k.us: atlas: atlas.corp.grokker.com: polyphemus: polyphemus.corp.grokker.com:)
+hosts=(stage prod utility stage.grokker.com grokker.com utility.gr0k.us atlas atlas.corp.grokker.com polyphemus polyphemus.corp.grokker.com)
+chosts=(stage: prod: utility: stage.grokker.com: grokker.com: utility.gr0k.us: atlas: atlas.corp.grokker.com: polyphemus: polyphemus.corp.grokker.com:)
 #PROMPT='<%B%n%b> <%~> %m%% '    # default prompt
 #PROMPT='[%B%t%b] %h [%c]:%m%# ' # Old Mike standard
 #PROMPT='%B%t%b-%m%# '
@@ -77,6 +77,9 @@ wiki() {
     lookup=${1// /_}
     dig +short txt $lookup.wp.dg.cx
 }
+
+# git branch completion
+autoload -U compinit && compinit
 
 # Prompts...
 autoload -U colors && colors
