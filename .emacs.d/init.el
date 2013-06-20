@@ -94,8 +94,7 @@
 (setq lintnode-location "~/lintnode")
 (setq lintnode-node-program "/opt/local/bin/node")
 ;; JSLint can be... opinionated
-(setq lintnode-jslint-set "node:true")
-(setq lintnode-jslint-includes (list 'vars 'plusplus 'stupid 'fragment))
+(setq lintnode-jslint-includes (list 'node 'unparam 'nomen 'vars 'plusplus 'stupid 'fragment))
 (setq lintnode-jslint-excludes (list 'onevar 'white))
 ; make flymake ignore a non-zero return from the curl; it treats it like an error
 (defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
@@ -105,6 +104,8 @@
 (add-hook 'js-mode-hook
           (lambda ()
             (lintnode-hook)))
+
+(define-key osx-key-mode-map `[(,osxkeys-command-key e)] 'flymake-goto-next-error)
 
 ;; Nice Flymake minibuffer messages
 (require 'flymake-cursor)
