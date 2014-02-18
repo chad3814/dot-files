@@ -14,7 +14,7 @@ chosts=(stage: prod: utility: stage.grokker.com: grokker.com: utility.gr0k.us: a
 #PROMPT='[%B%t%b] %h [%c]:%m%# ' # Old Mike standard
 #PROMPT='%B%t%b-%m%# '
 #RPROMPT=' %h:%B%c%b'
-export PATH="$HOME/bin:/opt/local/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin:/opt/mysql/product/5.0.45/bin:/usr/local/git/bin"
+export PATH="$HOME/bin:/opt/local/bin:/Applications/Aquamacs.app/Contents/MacOS/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin:/opt/mysql/product/5.0.45/bin:/usr/local/git/bin"
 TZ=US/Pacific
 
 if [ -e ~/.aliases ] ; then
@@ -24,7 +24,7 @@ fi
 export MAILCALL='You have new mail.'
 export YOUSAID='In %C you wrote:'
 export ATTRIBUTION='%f wrote:'
-export LESS=-cEX4M
+export LESS=-cEXMz-2
 export EDITOR="emacsclient"
 export VISUAL="emacsclient"
 export FLEX_HOME=/opt/flex_sdk_3.5
