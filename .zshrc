@@ -24,7 +24,7 @@ fi
 export MAILCALL='You have new mail.'
 export YOUSAID='In %C you wrote:'
 export ATTRIBUTION='%f wrote:'
-export LESS=-cEXMz-2
+export LESS=-cEXMz-2R
 export EDITOR="emacsclient"
 export VISUAL="emacsclient"
 export FLEX_HOME=/opt/flex_sdk_3.5

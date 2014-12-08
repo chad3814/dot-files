@@ -1,5 +1,5 @@
 ;; .emacs
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 ;(tool-bar-mode)
 
 ;; server stufff
@@ -106,6 +106,7 @@
             (lintnode-hook)))
 
 (define-key osx-key-mode-map `[(,osxkeys-command-key e)] 'flymake-goto-next-error)
+(global-set-key (kbd "C-c C-c") 'comment-region)
 
 ;; Nice Flymake minibuffer messages
 (require 'flymake-cursor)
