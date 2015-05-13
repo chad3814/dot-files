@@ -11,3 +11,6 @@ export PATH="/usr/local/mono-1.1.9.1_1/bin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/mono-1.1.9.1_1/lib/pkgconfig:$PKG_CONFIG_PATH"
 export MANPATH="/usr/local/mono-1.1.9.1_1/share/man:$MANPATH"
 
+
+export NVM_DIR="/Users/chad/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

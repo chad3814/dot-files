@@ -6,6 +6,7 @@
 
 cdpath=(.)
 umask 022
+ulimit -n 2560
 fignore=(.o ~)
 setenv() { export $1=$2 }  # csh compatibility
 hosts=(stage prod utility stage.grokker.com grokker.com utility.gr0k.us atlas atlas.corp.grokker.com polyphemus polyphemus.corp.grokker.com)
@@ -176,3 +177,6 @@ function setprompt() {
     [[ -n ${vcs_info_msg_1_} ]] && RPROMPT=" ${vcs_info_msg_1_}$infoline${reset}" || RPROMPT=' %h:%B%c%b'
     [[ -n ${vcs_info_msg_2_} ]] && RPROMPT=" ${red}${vcs_info_msg_2_}\$ ${white}${vcs_info_msg_1_}$infoline${reset}"
 }
+
+export NVM_DIR="/Users/chad/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
