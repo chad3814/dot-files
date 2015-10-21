@@ -88,22 +88,23 @@
 (setq ac-ignore-case nil)
 
 ;; flymake jslint
-(add-to-list 'load-path "~/lintnode")
-(require 'flymake-jslint)
+(require 'flymake-eslint)
+(add-hook 'js-mode-hook 'flymake-eslint-load)
+;(add-to-list 'load-path "~/lintnode")
 ;; Make sure we can find the lintnode executable
-(setq lintnode-location "~/lintnode")
-(setq lintnode-node-program "/opt/local/bin/node")
+;(setq lintnode-location "~/lintnode")
+;(setq lintnode-node-program "/opt/local/bin/node")
 ;; JSLint can be... opinionated
-(setq lintnode-jslint-includes (list 'node 'unparam 'nomen 'vars 'plusplus 'stupid 'fragment))
-(setq lintnode-jslint-excludes (list 'onevar 'white))
+;(setq lintnode-jslint-includes (list 'node 'unparam 'nomen 'vars 'plusplus 'stupid 'fragment))
+;(setq lintnode-jslint-excludes (list 'onevar 'white))
 ; make flymake ignore a non-zero return from the curl; it treats it like an error
-(defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
-    (setq flymake-check-was-interrupted t))
-(ad-activate 'flymake-post-syntax-check)
+;(defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
+;    (setq flymake-check-was-interrupted t))
+;(ad-activate 'flymake-post-syntax-check)
 ;; Start the server when we first open a js file and start checking
-(add-hook 'js-mode-hook
-          (lambda ()
-            (lintnode-hook)))
+;; (add-hook 'js-mode-hook
+;;           (lambda ()
+;;             (lintnode-hook)))
 
 (define-key osx-key-mode-map `[(,osxkeys-command-key e)] 'flymake-goto-next-error)
 (global-set-key (kbd "C-c C-c") 'comment-region)
@@ -320,6 +321,20 @@
 (add-hook 'php-mode-hook 'xfire-c-mode-hook)
 (add-hook 'cperl-mode-hook 'xfire-perl-mode-hook)
 (add-hook 'js-mode-hook 'grokker-js-mode-hook)
+
+;; Allow editing of binary .plist files.
+(add-to-list 'jka-compr-compression-info-list
+             ["\\.plist$"
+              "converting text XML to binary plist"
+              "plutil"
+              ("-convert" "binary1" "-o" "-" "-")
+              "converting binary plist to text XML"
+              "plutil"
+              ("-convert" "xml1" "-o" "-" "-")
+              nil nil "bplist"])
+
+;;It is necessary to perform an update!
+(jka-compr-update)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
