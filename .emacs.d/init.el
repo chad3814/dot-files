@@ -5,7 +5,7 @@
 ;; server stufff
 (server-start)
 (setq server-window 'switch-to-buffer-other-frame)
-(add-hook 'server-done-hook 'close-window)
+;(add-hook 'server-done-hook 'close-window)
 
 ;; midnight-mode cleans up unused buffers
 (require 'midnight)
