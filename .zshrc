@@ -178,5 +178,7 @@ function setprompt() {
     [[ -n ${vcs_info_msg_2_} ]] && RPROMPT=" ${red}${vcs_info_msg_2_}\$ ${white}${vcs_info_msg_1_}$infoline${reset}"
 }
 
+eval $(thefuck --alias)
+
 export NVM_DIR="/Users/chad/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
