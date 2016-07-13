@@ -2,6 +2,13 @@
 ;(menu-bar-mode -1)
 ;(tool-bar-mode)
 
+; remote packages
+(require 'package)
+(add-to-list 'package-archives
+              '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+
 ;; server stufff
 (server-start)
 (setq server-window 'switch-to-buffer-other-frame)
@@ -35,11 +42,11 @@
 ;(autoload 'geben "geben" "PHP Debugger on Emacs" t)
 
 ;; multi-term
-(autoload 'mutli-term "multi-term" nil t)
-(autoload 'multi-term-next "multi-term" nil t)
-(setq multi-term-program "/bin/zsh")	;; use zsh...
-(global-set-key (kbd "C-c t") 'multi-term-next) ;; goto next terminal or create a new one
-(global-set-key (kbd "C-c T") 'multi-term) ;; create a new one
+;(autoload 'mutli-term "multi-term" nil t)
+;(autoload 'multi-term-next "multi-term" nil t)
+;(setq multi-term-program "/bin/zsh")	;; use zsh...
+;(global-set-key (kbd "C-c t") 'multi-term-next) ;; goto next terminal or create a new one
+;(global-set-key (kbd "C-c T") 'multi-term) ;; create a new one
 
 ;;;;; Below is copied from my old .emacs
 ;;  Start the emacsclient server
@@ -87,26 +94,24 @@
 ; make case sensitive
 (setq ac-ignore-case nil)
 
-;; flymake jslint
-(require 'flymake-eslint)
-(add-hook 'js-mode-hook 'flymake-eslint-load)
-;(add-to-list 'load-path "~/lintnode")
-;; Make sure we can find the lintnode executable
-;(setq lintnode-location "~/lintnode")
-;(setq lintnode-node-program "/opt/local/bin/node")
-;; JSLint can be... opinionated
-;(setq lintnode-jslint-includes (list 'node 'unparam 'nomen 'vars 'plusplus 'stupid 'fragment))
-;(setq lintnode-jslint-excludes (list 'onevar 'white))
-; make flymake ignore a non-zero return from the curl; it treats it like an error
-;(defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
-;    (setq flymake-check-was-interrupted t))
-;(ad-activate 'flymake-post-syntax-check)
-;; Start the server when we first open a js file and start checking
-;; (add-hook 'js-mode-hook
-;;           (lambda ()
-;;             (lintnode-hook)))
+;; flycheck eslint
+(require 'flycheck)
 
-(define-key osx-key-mode-map `[(,osxkeys-command-key e)] 'flymake-goto-next-error)
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+	      (append flycheck-disabled-checkers
+		      '(javascript-jshint)))
+
+;; https://github.com/purcell/exec-path-from-shell
+;; only need exec-path-from-shell on OSX
+;; this hopefully sets up path and other vars better
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
+(define-key osx-key-mode-map `[(,osxkeys-command-key e)] 'flycheck-next-error)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
 ;; Nice Flymake minibuffer messages
@@ -391,4 +396,22 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(font-lock-warning-face ((t (:inherit font-lock-warning :background "black")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(cursor-type (quote box))
+ '(font-lock-auto-fontify nil)
+ '(gnuserv-frame t)
+ '(gud-gdb-command-name "gdb --annotate=1")
+ '(large-file-warning-threshold nil)
+ '(query-user-mail-address nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-error ((t (:background "Red"))))
  '(font-lock-warning-face ((t (:inherit font-lock-warning :background "black")))))
