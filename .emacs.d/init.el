@@ -115,9 +115,6 @@
 (define-key osx-key-mode-map `[(,osxkeys-command-key e)] 'flycheck-next-error)
 (global-set-key (kbd "C-c C-c") 'comment-region)
 
-;; Nice Flymake minibuffer messages
-(require 'flymake-cursor)
-
 ;; code folding for js-mode
 (add-hook 'js-mode-hook
           (lambda ()
