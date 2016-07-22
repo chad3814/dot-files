@@ -81,6 +81,7 @@
 (require 'tramp)
 (require 'zenburn)
 (color-theme-zenburn)
+(require 'swift-mode)
 
 ;; auto-complete config
 (require 'auto-complete-config)
